@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "server": "nodemon app.js"
+    "server": "nodemon app.js",
+    "user": "npm run start --prefix user",
+    "dev": "concurrently \"npm run server\" \"npm run user\""
   },
   "keywords": [
     "blog",

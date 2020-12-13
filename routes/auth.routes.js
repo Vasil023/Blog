@@ -6,12 +6,12 @@ const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
 const router = Router()
 
-// register
+// /api/auth/register
 router.post(
   '/register',
   [
     check('email', 'Неверный email').isEmail(),
-    check('password', 'Мынымус 6 символов') .isLength({min: 6})
+    check('password', 'Минимум 6 символов').isLength({min: 6})
   ],
    async (req, res) => {
     try {
@@ -69,10 +69,6 @@ router.post(
     if (!isPassword) {
       return res.status(400).json({ message: 'Неверный пароль' })
     }
-      
-    } catch (e) {
-       res.status(500).json({ message: 'Что-то пошло не так '})
-    }
 
     const token = jwt.sign(
       {userID: user.id},
@@ -80,6 +76,10 @@ router.post(
       { expiresIn: '1h' }
     )
     res.json({ token, userID: user.id })
+      
+    } catch (e) {
+       res.status(500).json({ message: 'Что-то пошло не так '})
+    }
 })
 
 module.exports = router
