@@ -1,0 +1,26 @@
+import React, { useContext } from 'react'
+import {NavLink, useHistory} from 'react-router-dom'
+import { ContextAuth } from '../context/ContextAuth'
+
+export const  Navbar = () => {
+  const history = useHistory()
+  const auth = useContext(ContextAuth)
+  const logoutHandler = event => {
+    event.preventDefault()
+    auth.logout()
+    history.push('/')
+  }
+  return (
+  <nav>
+    <div className="nav-wrapper">
+      <samp className="brand-logo">Blog</samp>
+      <ul id="nav-mobile" className="right hide-on-med-and-down">
+        <li><NavLink to="/create">Создать</NavLink></li>
+        <li><NavLink to="/posts">Создать</NavLink></li>
+        <li><a href="/" onClick={logoutHandler}>Выйти</a></li>
+
+      </ul>
+    </div>
+  </nav>
+  )
+}
