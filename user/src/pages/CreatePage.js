@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react'
 import {useHttp} from '../hooks/http.hook'
 import {ContextAuth} from '../context/ContextAuth'
 import {useHistory} from 'react-router-dom'
+import {Post} from './Posts'
 
 export const CreatePage = () => {
   const history = useHistory()
@@ -20,6 +21,7 @@ export const CreatePage = () => {
           Authorization: `Bearer ${auth.token}`
         })
         history.push(`/post/${data.post._id}`)
+        console.log(data)
       } catch (e) {}
     }
   }
@@ -39,7 +41,9 @@ export const CreatePage = () => {
           <label htmlFor="link">Введите ссылку</label>
         </div>
       </div>
+       <Post />
     </div>
+   
   )
 }
 
