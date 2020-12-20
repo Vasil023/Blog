@@ -1,10 +1,10 @@
 const {Schema, model, Types} = require('mongoose')
 
-const schema = new Schema({
+const postSchema = new Schema({
   title: {type: String, required: true},
-  descr: {type: String, required: true},
+  // descr: {type: String, required: true},
   data: {type: Date, default: Date.now},
-  posts: [{type: Types.ObjectId, ref: 'Post'}]
+  user: [{type: Types.ObjectId, ref: 'User'}]
 })
 
-module.exports = model('Post', schema)
+module.exports = model('Post', postSchema)

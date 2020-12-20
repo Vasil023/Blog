@@ -1,9 +1,7 @@
 import React from 'react'
 
-export const PostsPage = () => {
-  return (
-    <div>
-      <h1>Post Page</h1>
-    </div>
+export const PostPage = () => {
+  return(
+    <h1>PostPage</h1>
   )
 }
