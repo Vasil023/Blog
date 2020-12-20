@@ -2,7 +2,8 @@ import React, {useContext, useEffect, useState} from 'react'
 import {useHttp} from '../hooks/http.hook'
 import {ContextAuth} from '../context/ContextAuth'
 import {useHistory} from 'react-router-dom'
-import {Post} from './Posts'
+import {GetAllPosts} from './GetAllPosts'
+
 
 export const CreatePage = () => {
   const history = useHistory()
@@ -20,28 +21,30 @@ export const CreatePage = () => {
         const data = await request('/api/post/posts', 'POST', {title: post}, {
           Authorization: `Bearer ${auth.token}`
         })
-        history.push(`/post/${data.post._id}`)
+        history.push(`/post`)
         console.log(data)
       } catch (e) {}
     }
   }
 
   return (
-    <div className="row">
+    <div className="row" style={{display: 'flex', flexDirection: 'column'}}>
       <div className="col s8 offset-s2" style={{paddingTop: '2rem'}}>
         <div className="input-field">
           <input
-            placeholder="Вставьте ссылку"
+            placeholder="Введите текст"
             id="link"
             type="text"
             value={post}
             onChange={e => setPost(e.target.value)}
             onKeyPress={pressHandler}
           />
-          <label htmlFor="link">Введите ссылку</label>
+          <label htmlFor="link">О чем вы думаете</label>
         </div>
       </div>
-       <Post />
+      <div>
+      <GetAllPosts />
+      </div>
     </div>
    
   )

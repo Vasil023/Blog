@@ -24,9 +24,18 @@ router.post(
   }
 })
 
-router.get('/:id', auth,  async (req, res) => {
+router.get('/', auth,  async (req, res) => {
   try {
     const post = await Post.find({user: req.user.userID}) 
+    res.json(post)
+  } catch (e) {
+
+  }
+})
+
+router.get('/all', auth,  async (req, res) => {
+  try {
+    const post = await Post.find() 
     res.json(post)
   } catch (e) {
 
