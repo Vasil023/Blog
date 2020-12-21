@@ -9,21 +9,25 @@ export const CreatePage = () => {
   const history = useHistory()
   const auth = useContext(ContextAuth)
   const {request} = useHttp()
-  const [post, setPost] = useState('')
+  const [post, setPost] = useState({
+    title: '', 
+    nickName: auth.nickName
+  })
 
   useEffect(() => {
     window.M.updateTextFields()
   }, [])
 
-  // const getData = (event) => {
-  //   setPost({...post, [event.target.name]: event.target.value})
-  // }
+  const getData = (event) => {
+    setPost({...post, [event.target.name]: event.target.value})
+  }
 //Post запрос
   const pressHandler = async () => {
       try {
-        await request('/api/post/posts', 'POST', {title: post}, {
+       const data = await request('/api/post/posts', 'POST', {...post}, {
           Authorization: `Bearer ${auth.token}`
         })
+        console.log(data)
         history.push(`/post`)
       } catch (e) {}
     
@@ -39,10 +43,10 @@ export const CreatePage = () => {
             name="title"
             type="text"
             // value={post}
-            onChange={e => setPost(e.target.value)}
+            onChange={getData}
             // onKeyPress={pressHandler}
           />
-          <label htmlFor="link">О чем вы думаете</label>
+          <label htmlFor="title">О чем вы думаете</label>
         </div>
         <button  onClick={pressHandler} >Add</button>
       </div>

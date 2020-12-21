@@ -16,8 +16,9 @@ router.post(
   auth, async (req, res) => {
   try {
     // const baseUrl = config.get('baseUrl')
-    const {title, nickName} = req.body
+    const {title} = req.body
     const post = new Post({title, nickName, user: req.user.userID})
+    console.log(post)
     await post.save()
     res.status(201).json({ post})
   } catch (e) {
