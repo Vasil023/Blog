@@ -16,7 +16,7 @@ export const  Navbar = () => {
       <samp className="brand-logo">Blog</samp>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         <li><NavLink to="/create">Главная</NavLink></li>
-        <li><NavLink to="/post">My post</NavLink></li>
+        <li><NavLink to="/all">My post</NavLink></li>
         <li><a href="/" onClick={logoutHandler}>Выйти</a></li>
 
       </ul>

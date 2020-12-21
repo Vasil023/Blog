@@ -3,6 +3,7 @@ import { useHttp } from '../hooks/http.hook'
 import { ContextAuth } from '../context/ContextAuth'
 import {Loader} from '../components/Loader'
 import { PostPage } from './PostPage'
+import { MyProfile } from '../components/MyProfile'
 
 export const GetUserPost = () => {
     const {token} = useContext(ContextAuth)
@@ -26,9 +27,14 @@ export const GetUserPost = () => {
     return <Loader />
   }
   
-    return (
-        <>
-       {!loading && post && <PostPage post={post} />}
-        </>
-    )
+  return (
+    <>
+    <div>
+      <MyProfile />
+    </div>
+    <div>
+      {!loading && post && <PostPage post={post} />}
+    </div>
+    </>
+  )
 }

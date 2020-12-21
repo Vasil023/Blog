@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const Post = require('../models/Post')
 const User = require('../models/User')
 const auth = require('../middleware/middleware')
+
 const config = require('config')
 // const {check, validationResult} = require('express-validator')
 const router = Router()
@@ -17,12 +18,13 @@ router.post(
   try {
     // const baseUrl = config.get('baseUrl')
     const {title} = req.body
-    const post = new Post({title, nickName, user: req.user.userID})
+    const user = await User.findById(req.user.userID)
+    const post = new Post({title, nickName: user.nickName, user: req.user.userID}).save()
     console.log(post)
-    await post.save()
-    res.status(201).json({ post})
+    res.status(201).json({ post })
+   
   } catch (e) {
-    res.status(500).json({ message: 'Что-то пошло не так '})
+    res.status(500).json({ message: 'Что-то пошло не так!! '})
   }
 })
 

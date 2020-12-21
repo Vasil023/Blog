@@ -11,6 +11,7 @@ export const CreatePage = () => {
   const {request} = useHttp()
   const [post, setPost] = useState({
     title: '', 
+    user: auth.userID,
     nickName: auth.nickName
   })
 
@@ -24,10 +25,9 @@ export const CreatePage = () => {
 //Post запрос
   const pressHandler = async () => {
       try {
-       const data = await request('/api/post/posts', 'POST', {...post}, {
+       await request('/api/post/posts', 'POST', {...post}, {
           Authorization: `Bearer ${auth.token}`
         })
-        console.log(data)
         history.push(`/post`)
       } catch (e) {}
     
@@ -48,7 +48,7 @@ export const CreatePage = () => {
           />
           <label htmlFor="title">О чем вы думаете</label>
         </div>
-        <button  onClick={pressHandler} >Add</button>
+        <button onClick={pressHandler} >Add</button>
       </div>
       <div>
       <GetAllPosts />

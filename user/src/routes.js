@@ -3,20 +3,19 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import {GetUserPost} from './pages/GetUserPost'
 import { CreatePage } from './pages/CreatePage'
 import { AuthPage } from './pages/AuthPage'
-import { GetAllPosts } from './pages/GetAllPosts'
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
     return (
       <Switch>
-        <Route path="/post" exact>
+        {/* <Route path="/post" exact>
           <GetUserPost />
-        </Route>
+        </Route> */}
         <Route path="/create" exact>
           <CreatePage />
         </Route>
         <Route path="/all" exact>
-          <GetAllPosts />
+          <GetUserPost />
         </Route>
         <Redirect to="/create" />
       </Switch>
