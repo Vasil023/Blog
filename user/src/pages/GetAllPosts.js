@@ -14,7 +14,6 @@ export const GetAllPosts = () => {
       const posts = await request(`/api/post/all`, 'GET', null, {
         Authorization: `Bearer ${token}`
       })
-      console.log(posts)
       setPost(posts)
     } catch (e){}
   }, [token, request])

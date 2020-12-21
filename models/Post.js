@@ -5,7 +5,7 @@ const postSchema = new Schema({
   // descr: {type: String, required: true},
   data: {type: Date, default: Date.now},
   user: [{type: Types.ObjectId, ref: 'User'}],
-  nickName: {type: String}
+  nickName: {type: String, required: true}
 })
 
 module.exports = model('Post', postSchema)

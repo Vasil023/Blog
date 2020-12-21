@@ -8,7 +8,7 @@ export const AuthPage = () => {
   const message = useError()
   const {loading, request, error, clearError} = useHttp()
   const [form, setForm] = useState({
-    email: '', password: ''
+    email: '', password: '', nickName: ''
    })
 
    useEffect(() => {
@@ -47,14 +47,14 @@ export const AuthPage = () => {
         <div className="card-content white-text">
           <span className="card-title">Авторизация</span>
           <div className="input-field">
-          {/* <input
+          <input
               placeholder="Введите Nick Name" 
-              id="name"
+              id="nickName"
               type="text"
               className="validate"
-              name="name"
+              name="nickName"
               onChange={changeHandler}
-              /> */}
+              />
             <input
               placeholder="Введите email" 
               id="email"

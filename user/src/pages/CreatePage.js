@@ -14,17 +14,19 @@ export const CreatePage = () => {
   useEffect(() => {
     window.M.updateTextFields()
   }, [])
+
+  // const getData = (event) => {
+  //   setPost({...post, [event.target.name]: event.target.value})
+  // }
 //Post запрос
-  const pressHandler = async event => {
-    if (event.key === 'Enter') {
+  const pressHandler = async () => {
       try {
-        const data = await request('/api/post/posts', 'POST', {title: post}, {
+        await request('/api/post/posts', 'POST', {title: post}, {
           Authorization: `Bearer ${auth.token}`
         })
         history.push(`/post`)
-        console.log(data)
       } catch (e) {}
-    }
+    
   }
 
   return (
@@ -33,14 +35,16 @@ export const CreatePage = () => {
         <div className="input-field">
           <input
             placeholder="Введите текст"
-            id="link"
+            id="title"
+            name="title"
             type="text"
-            value={post}
+            // value={post}
             onChange={e => setPost(e.target.value)}
-            onKeyPress={pressHandler}
+            // onKeyPress={pressHandler}
           />
           <label htmlFor="link">О чем вы думаете</label>
         </div>
+        <button  onClick={pressHandler} >Add</button>
       </div>
       <div>
       <GetAllPosts />
