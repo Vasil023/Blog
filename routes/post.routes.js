@@ -1,6 +1,7 @@
 const {Router} = require('express')
 const jwt = require('jsonwebtoken')
 const Post = require('../models/Post')
+// const User = require('../models/User')
 const auth = require('../middleware/middleware')
 const config = require('config')
 // const {check, validationResult} = require('express-validator')
@@ -16,6 +17,7 @@ router.post(
   try {
     // const baseUrl = config.get('baseUrl')
     const {title} = req.body
+    // const user = await User.findById(req.user.id)
     const post = new Post({title, user: req.user.userID})
     await post.save()
     res.status(201).json({ post})

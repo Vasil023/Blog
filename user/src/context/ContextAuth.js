@@ -4,6 +4,7 @@ function no() {}
 
 export const ContextAuth = createContext({
   token: null,
+  // nickName: null,
   userID: null,
   login: no,
   logout: no,

@@ -1,11 +1,17 @@
 import React from 'react'
 
 export const PostPage = ({post}) => {
-  console.log(post)
+  
   const element = post.map((item) => {
+    // console.log(item)
     return (
       <>
-        <h5 key={item._id} >{item.title}</h5>
+        <div className="row">
+          <div className="col s8 offset-s2">
+           <span>{item.user}</span>
+           <p key={item._id} >{item.title}</p>
+          </div>
+        </div>
       </>
     )
   })

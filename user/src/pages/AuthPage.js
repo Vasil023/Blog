@@ -47,6 +47,14 @@ export const AuthPage = () => {
         <div className="card-content white-text">
           <span className="card-title">Авторизация</span>
           <div className="input-field">
+          {/* <input
+              placeholder="Введите Nick Name" 
+              id="name"
+              type="text"
+              className="validate"
+              name="name"
+              onChange={changeHandler}
+              /> */}
             <input
               placeholder="Введите email" 
               id="email"
