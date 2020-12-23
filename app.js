@@ -13,16 +13,18 @@ app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/post', require('./routes/post.routes'))
 
 if (process.env.NODE_ENV === 'production') {
-  app.use('/', express.static(path.join(__dirname, 'user', 'build')))
+  app.use(express.static('user/build'))
+
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'user', 'build', 'index.html'))
+    res.sendFile(path.json(__dirname, 'user', 'build', 'index.html'))
   })
+  
 }
 
-const PORT = config.get('port') || 5000
+const PORT = process.env.PORT || 5000
 async function start () {
   try {
-    await mongoose.connect(config.get('mongoUrl'), {
+    await mongoose.connect(process.env.MONGODB_URI || config.get('mongoUrl'), {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true

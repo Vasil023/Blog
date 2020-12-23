@@ -4,12 +4,11 @@
   "description": "Blog",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node app.js",
+    "start": "node app.js",
     "server": "nodemon app.js",
     "user": "npm run start --prefix user",
-    "user:install": "npm install --prefix user",
-    "user:build": "npm run build --prefix user",
-    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run user\""
+    "heroku-postbuild": "cd user && npm install && npm run build",
+    "dev": "concurrently \"npm run server\" \"npm run user\""
   },
   "keywords": [
     "blog",
