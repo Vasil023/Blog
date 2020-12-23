@@ -21,32 +21,26 @@ router.post(
     res.status(500).json({ message: 'Что-то пошло не так!! '})
   }
 })
-
+// // /api/post/
 router.get('/', auth,  async (req, res) => {
   try {
     const post = await Post.find({user: req.user.userID}) 
     res.json(post)
-  } catch (e) {
-
-  }
+  } catch (e) {}
 })
-
+// // /api/post/all
 router.get('/all', auth,  async (req, res) => {
   try {
     const post = await Post.find() 
     res.json(post)
-  } catch (e) {
-
-  }
+  } catch (e) {}
 })
-
+// /api/post/alluser
 router.get('/alluser', auth,  async (req, res) => {
   try {
     const user = await User.find() 
     res.json(user)
-  } catch (e) {
-
-  }
+  } catch (e) {}
 })
 
 module.exports = router

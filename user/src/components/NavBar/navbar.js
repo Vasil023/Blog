@@ -26,7 +26,7 @@ export const  Navbar = () => {
 
           <li className="home-icon">
           <NavLink to="/users">
-          <i class="fas fa-users"></i>
+          <i className="fas fa-users"></i>
             Users
           </NavLink></li>
 

@@ -4,14 +4,13 @@ import img from '../../image/user.png'
 import './MyProfile.css'
 
 export const MyProfile = ({post}) => { 
-  console.log(post)
  if (post.length) {
   return (
     <div className="row">
     <div className="col ">
       <div className="card">
         <div className="card-image">
-          <img src={img}/>
+          <img src={img} alt="user-img"/>
         </div>
         <div className="card-content">
           <p>@username</p>
@@ -27,7 +26,7 @@ export const MyProfile = ({post}) => {
     <div className="col ">
       <div className="card">
         <div className="card-image">
-          <img src={img}/>
+          <img src={img} alt="user-img"/>
         </div>
         <div className="card-content">
           <p>@username</p>
