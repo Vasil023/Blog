@@ -4,7 +4,7 @@ import { useRoutes } from './routes';
 import { useAuth } from './hooks/auth';
 import {ContextAuth} from './context/ContextAuth'
 import 'materialize-css'
-import { Navbar } from './components/navbar';
+import { Navbar } from './components/NavBar/navbar';
 
 function App() {
   const {token, login, logout, userId} = useAuth()
@@ -16,9 +16,11 @@ function App() {
     }}>
       <Router>
         {isAuth && <Navbar />}
-      <div className="container">
+        <div className="wrraper" style={{backgroundColor: "#f5f8fa"}}>
+        <div className="container">
       {routes}
       </div>
+        </div>
       </Router>
     </ContextAuth.Provider>
     

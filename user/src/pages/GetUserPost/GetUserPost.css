@@ -1,0 +1,17 @@
+.wrapper-profile {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user {
+    width: 200px;
+    float: none !important;
+}
+.row .col.s3 {
+    margin-left: 0;
+}
+.row .col.s7 {
+    margin-top: -353px;
+    margin-left: 160px;
+    width: 98%;
+}

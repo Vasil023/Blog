@@ -1,0 +1,45 @@
+body {
+ background-color: #f5f8fa;
+ /* font-family: 'Montserrat', sans-serif; */
+}
+
+.block {
+    /* Style for "tweet box" */
+    width: 593px;
+    border: 1px solid #d8e2e8;
+    background-color: #ffffff;
+}
+.nick-name {
+    color: #292f33;
+    font-family: "Helvetica Neue";
+    font-size: 14px;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: 20px;
+    text-align: left;
+}
+.title {
+    /* Style for "And now co" */
+    color: #333333;
+    font-family: "Helvetica Neue";
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: 22px;
+    text-align: left;
+}
+.wrapper {
+    display: flex;
+    justify-content: flex-end;
+    height: 26px;
+}
+.data {
+    color: #8899a6;
+    font-size: 13px;
+}
+.likes {
+    padding-right: 15px;
+}
+ 

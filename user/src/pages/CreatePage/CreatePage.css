@@ -1,0 +1,14 @@
+.input-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.input-field {
+    width: 80%;
+}
+.btn {
+    margin-top: 20px;
+    background: #0084b4;;
+}
+.row .col {
+    /* float: none !important; */
+}

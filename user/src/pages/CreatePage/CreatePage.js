@@ -1,8 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {useHttp} from '../hooks/http.hook'
-import {ContextAuth} from '../context/ContextAuth'
+import {useHttp} from '../../hooks/http.hook'
+import {ContextAuth} from '../../context/ContextAuth'
 import {useHistory} from 'react-router-dom'
-import {GetAllPosts} from './GetAllPosts'
+import {GetAllPosts} from '../GetAllPosts/GetAllPosts'
+
+import './CreatePage.css'
 
 
 export const CreatePage = () => {
@@ -34,21 +36,20 @@ export const CreatePage = () => {
   }
 
   return (
-    <div className="row" style={{display: 'flex', flexDirection: 'column'}}>
-      <div className="col s8 offset-s2" style={{paddingTop: '2rem'}}>
+    <div className="row">
+      <div className="col s8 offset-s2 input-wrapper" style={{paddingTop: '2rem'}}>
         <div className="input-field">
           <input
             placeholder="Введите текст"
             id="title"
             name="title"
             type="text"
-            // value={post}
+            data-length="120"
             onChange={getData}
-            // onKeyPress={pressHandler}
           />
           <label htmlFor="title">О чем вы думаете</label>
         </div>
-        <button onClick={pressHandler} >Add</button>
+        <button className="waves-effect waves-light btn" onClick={pressHandler} >Add Post</button>
       </div>
       <div>
       <GetAllPosts />

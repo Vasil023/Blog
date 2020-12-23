@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useError } from '../hooks/error.hook'
-import { useHttp } from '../hooks/http.hook'
-import {ContextAuth} from '../context/ContextAuth'
+import { useError } from '../../hooks/error.hook'
+import { useHttp } from '../../hooks/http.hook'
+import {ContextAuth} from '../../context/ContextAuth'
+
+import './AuthPage.css'
 
 export const AuthPage = () => {
   const auth = useContext(ContextAuth)
@@ -42,9 +44,9 @@ export const AuthPage = () => {
   return (
     <div className="row">
       <div className="col s6 offset-s3">
-        <h1>Register</h1>
+        <h1>Blog</h1>
         <div className="card blue-grey darken-1">
-        <div className="card-content white-text">
+        <div className="card-content black-text">
           <span className="card-title">Авторизация</span>
           <div className="input-field">
           <input
@@ -81,7 +83,7 @@ export const AuthPage = () => {
         </div>
         <div className="card-action">
           <button
-           className="btn  yellow darken-4" 
+           className="btn" 
            style={{marginRight: 10}}
            disabled={loading}
            onClick={loginHandler}

@@ -1,0 +1,30 @@
+.nav-wrapper {
+    background-color: #0084b4;;
+}
+li {
+    color: #66757f;
+    font-family: "Helvetica Neue";
+    font-size: 13px;
+    font-weight: 700;
+}
+.user-icon {
+    display: flex;
+}
+.user-icon i {
+    padding-right: 10px;
+    font-size: 19px;
+}
+.home-icon {
+    display: flex;
+}
+.home-icon i {
+    padding-right: 10px;
+    font-size: 19px;
+}
+.logout-icon {
+    display: flex;
+}
+.logout-icon i {
+    padding-right: 10px;
+    font-size: 19px;
+}
