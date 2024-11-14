@@ -27,6 +27,7 @@ const createRecipes = async () => {
     point: point.value,
     isDone: false,
     isCooking: false,
+    isChecked: false,
   };
 
   if (image.value) {
@@ -59,13 +60,13 @@ const createRecipe = async (data) => {
   <div class="flex items-center justify-center mt-5 pb-10">
     <!-- Author: FormBold Team -->
     <div class="mx-auto w-full h-screen max-w-[550px] bg-white">
-      <form class="py-4 px-9">
+      <form class="py-4 px-5">
         <div class="mb-5">
           <label
             for="email"
             class="mb-2 block text-base font-medium text-[#07074D]"
           >
-            Title title
+            Назва
           </label>
 
           <input
@@ -80,7 +81,7 @@ const createRecipe = async (data) => {
             for="email"
             class="mb-2 block text-base font-medium text-[#07074D]"
           >
-            Description description
+            Опис
           </label>
           <input
             class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
@@ -94,7 +95,7 @@ const createRecipe = async (data) => {
             for="email"
             class="mb-2 block text-base font-medium text-[#07074D]"
           >
-            Point
+            Ціна
           </label>
           <input
             class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
@@ -104,12 +105,11 @@ const createRecipe = async (data) => {
         </div>
 
         <div class="mb-6 pt-4">
-          <label class="mb-5 block text-xl font-semibold text-[#07074D]">
-            Upload File
+          <label class="mb-5 block text-base font-medium text-[#07074D]">
+            Загрузить зображення
           </label>
 
           <div class="mb-8">
-            <input type="file" @change="onFileChange" accept="image/*" />
             <label
               for="file"
               class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
@@ -124,8 +124,15 @@ const createRecipe = async (data) => {
                 <span
                   class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
                 >
-                  Browse
+                  Вибрати
                 </span>
+                <input
+                  type="file"
+                  @change="onFileChange"
+                  accept="image/*"
+                  id="file"
+                  class="file"
+                />
               </div>
             </label>
           </div>

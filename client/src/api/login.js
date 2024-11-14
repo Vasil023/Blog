@@ -1,7 +1,7 @@
 import apiClient from "./axios";
 
-const REGISTER = "/register";
-const LOGIN = "/login";
+const REGISTER = "/auth/register";
+const LOGIN = "/auth/login";
 
 export const register = async (email, password, role) => {
   try {

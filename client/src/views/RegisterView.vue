@@ -45,7 +45,7 @@ const loginUser = async () => {
       <div class="lg:w-1/2 xl:w-5/12">
         <div class="mt-12 flex flex-col items-center">
           <h1 class="text-2xl xl:text-3xl font-extrabold">
-            {{ login ? "Login" : "Register" }}
+            {{ login ? "Увійти" : "Реєстрація" }}
           </h1>
 
           <div class="w-full flex-1 mt-8">
@@ -82,7 +82,9 @@ const loginUser = async () => {
                   />
                 </svg>
 
-                <span class="ml-3"> {{ login ? "Login" : "Register" }} </span>
+                <span class="ml-3">
+                  {{ login ? "Увійти" : "Регістрація" }}
+                </span>
               </button>
             </div>
 
@@ -90,16 +92,14 @@ const loginUser = async () => {
               <div
                 class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2"
               >
-                {{
-                  login ? "Dont have an account?" : "Already have an account?"
-                }}
+                {{ login ? "Не маєте аккаунту?" : "Вже маєте аккаунт?" }}
               </div>
             </div>
 
             <div class="flex flex-col items-center px-3">
               <button>
                 <span class="ml-4" @click="login = !login">
-                  {{ login ? "Register" : "Login" }}
+                  {{ login ? "Регістрація" : "Увійти" }}
                 </span>
               </button>
             </div>

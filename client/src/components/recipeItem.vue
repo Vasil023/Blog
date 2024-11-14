@@ -1,5 +1,13 @@
 <script setup>
+import { useRecipeStore } from "@/stores/recipeStore";
+
 const props = defineProps(["item"]);
+
+const recipeStore = useRecipeStore();
+
+const checkRecipe = async (id, isChecked) => {
+  await recipeStore.checkItem(id, isChecked);
+};
 </script>
 
 <template>
@@ -74,7 +82,17 @@ const props = defineProps(["item"]);
           </p>
         </div>
         <div class="p-6 pt-3">
-          <button class=" " type="button">Reserve</button>
+          <button
+            @click.prevent="
+              checkRecipe(props.item._id, props.item.isChecked ? false : true)
+            "
+            type="button"
+            :class="{
+              'disabled:opacity-40': props.item.isChecked,
+            }"
+          >
+            {{ props.item.isChecked ? "Вже вибрано" : "Вибрати" }}
+          </button>
         </div>
       </div>
     </div>

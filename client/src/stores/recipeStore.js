@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { getAllRecipe, createRecipe } from '@/api/recipe'
+import { getAllRecipe, createRecipe, checkItem } from '@/api/recipe'
 
 export const useRecipeStore = defineStore('recipe', {
   state: () => ({
@@ -11,6 +11,22 @@ export const useRecipeStore = defineStore('recipe', {
     async createRecipe({ ...args }) {
       try {
         await createRecipe(args)
+      } catch (error) {
+        this.error = error.response?.data?.message || 'Не вдалося створити рецепт'
+      }
+    },
+
+    async checkItem(id, isChecked) {
+      console.log(id, isChecked);
+      try {
+        const response = await checkItem(id, isChecked)
+
+        this.allRecipe.forEach((recipe) => {
+          if (recipe._id === id) {
+            recipe.isChecked = response.recipe.isChecked
+          }
+        })
+
       } catch (error) {
         this.error = error.response?.data?.message || 'Не вдалося створити рецепт'
       }

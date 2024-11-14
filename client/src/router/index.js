@@ -21,6 +21,12 @@ const routes = [
     name: 'create',
     component: () => import('../views/CreateItemsView.vue'),
   },
+
+  {
+    path: '/checked',
+    name: 'check',
+    component: () => import('../views/CheckedItems.vue'),
+  },
 ]
 
 const router = createRouter({
