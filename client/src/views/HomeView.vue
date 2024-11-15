@@ -13,7 +13,10 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <div class="grid grid-cols-1 gap-6 pb-10 px-2" v-if="recipeStore.allRecipe">
+    <div
+      class="columns-2 lg:columns-4 lg:gap-3 gap-2 pt-1 pb-20"
+      v-if="recipeStore.allRecipe"
+    >
       <recipeItem
         v-for="item in recipeStore.allRecipe"
         :item="item"

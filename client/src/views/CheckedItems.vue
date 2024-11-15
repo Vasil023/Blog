@@ -13,10 +13,7 @@ const isCheckedItem = computed(() => {
 <template>
   <div>
     <div class="container">
-      <div
-        class="grid grid-cols-1 gap-6 pb-10 px-2"
-        v-if="isCheckedItem.length"
-      >
+      <div class="columns-2 gap-2 pt-6 pb-20" v-if="isCheckedItem.length">
         <recipeItem
           v-for="item in isCheckedItem"
           :item="item"
@@ -25,8 +22,11 @@ const isCheckedItem = computed(() => {
       </div>
       <div class="grid place-items-center h-screen" v-else>
         <div class="grid place-items-center gap-4">
-          <span class="pi pi-cart-minus" style="font-size: 4rem"></span>
-          <p>No recipe found</p>
+          <span
+            class="pi pi-cart-minus"
+            style="font-size: 4rem; color: #5a382d"
+          ></span>
+          <p>Ви нічого не додали в обране</p>
         </div>
       </div>
     </div>

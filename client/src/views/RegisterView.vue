@@ -8,7 +8,7 @@ const email = ref("");
 const password = ref("");
 const role = ref("user");
 const error = ref("");
-const login = ref(false);
+const login = ref(true);
 const userStore = useUserStore();
 
 const route = useRouter();

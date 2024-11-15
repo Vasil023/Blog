@@ -2,9 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fff;
+}
+
+.logo {
+  font-family: 'Modak', cursive;
+  letter-spacing: 10px;
+  font-size: 45px;
+}
+
 #app {
   button {
-    background-color: #111827;
+    background-color: #603d31;
     display: block;
     color: white;
     width: 100%;

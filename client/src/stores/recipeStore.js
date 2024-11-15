@@ -7,7 +7,6 @@ export const useRecipeStore = defineStore('recipe', {
   }),
 
   actions: {
-
     async createRecipe({ ...args }) {
       try {
         await createRecipe(args)
@@ -44,5 +43,11 @@ export const useRecipeStore = defineStore('recipe', {
     },
 
 
+  },
+
+  getters: {
+    getCheckedRecipe: (state) => {
+      return state.allRecipe.filter((recipe) => recipe.isChecked)
+    }
   },
 })
