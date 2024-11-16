@@ -22,5 +22,10 @@ mongoose.connect(config.get('mongoUrl'))
 app.use('/api/auth', authRoutes);
 app.use('/api/recipes', recipeRoutes);
 
+// Catch-all route for SPA
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
+
 const PORT = config.get('port') || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
