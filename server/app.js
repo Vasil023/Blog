@@ -12,6 +12,15 @@ const PORT = process.env.PORT || 3000; // Використовуємо process.e
 
 const app = express();
 
+// Проксі для API запитів
+if (process.env.NODE_ENV === 'development') {
+  // Лише в локальному середовищі проксуючи запити
+  app.use('/api', createProxyMiddleware({
+    target: 'http://localhost:3001', // Ваш локальний API сервер
+    changeOrigin: true,
+  }));
+}
+
 // Статичні файли
 app.use(express.static(path.join('client', 'dist')));
 
@@ -33,16 +42,9 @@ mongoose.connect(url)
 app.use('/api/auth', authRoutes);
 app.use('/api/recipes', recipeRoutes);
 
-
-// Catch-all route for SPA
+// Catch-all route for SPA (обробка запитів до фронтенду)
 app.get('*', (req, res) => {
-  res.sendFile(path.join('client', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 
-
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-app.use('/api', createProxyMiddleware({
-  target: 'http://localhost:3000', // Ваш локальний API сервер
-  changeOrigin: true,
-}));
