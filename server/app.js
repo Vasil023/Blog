@@ -20,12 +20,12 @@ const corsOptions = {
 
 const app = express();
 
-// Проксі для API запитів
+// Проксі для API запитів, якщо це локальне середовище
 if (process.env.NODE_ENV === 'development') {
-  // Лише в локальному середовищі проксуючи запити
   app.use('/api', createProxyMiddleware({
-    target: 'http://localhost:3001', // Ваш локальний API сервер
+    target: 'http://localhost:3000', // Ваш API сервер, якщо він працює на іншому порту
     changeOrigin: true,
+    pathRewrite: { '^/api': '' }, // Перезаписуємо шлях, якщо потрібно
   }));
 }
 
