@@ -34,7 +34,8 @@ app.use('/api/recipes', recipeRoutes);
 
 // Catch-all route for SPA
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html')); // Якщо у вас є client/dist
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
+
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
