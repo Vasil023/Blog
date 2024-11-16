@@ -11,8 +11,8 @@ const PORT = process.env.PORT || 3000; // Використовуємо process.e
 
 const app = express();
 
-// Обслуговування статичних файлів
-app.use(express.static(path.join(__dirname, 'public')));
+// Статичні файли
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
 // Налаштування CORS
 app.use(cors());
