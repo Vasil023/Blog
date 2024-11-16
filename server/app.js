@@ -5,7 +5,7 @@ const dotenv = require('dotenv').config();
 const authRoutes = require('./routes/auth.routes');
 const recipeRoutes = require('./routes/recipe.routes');
 
-const url = dotenv.parsed.ATLAS_URL || '';
+const url = 'mongodb+srv://myblogactivation:cyKjAufKOSA9lLGW@cooking.bgsxm.mongodb.net/test?retryWrites=true&w=majority&appName=cooking';
 const port = dotenv.parsed.PORT || 3000;
 
 const app = express();

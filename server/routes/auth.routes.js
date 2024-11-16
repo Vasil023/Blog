@@ -2,11 +2,9 @@
 const { Router } = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+const dotenv = require('dotenv').config();
 const { check, validationResult } = require('express-validator');
 const User = require('../models/User');
-const Recipe = require('../models/Recipe');
-const upload = require("../upload")
 const router = Router();
 
 // Маршрут для реєстрації
@@ -48,7 +46,7 @@ router.post(
       // Створення токена
       const token = jwt.sign(
         { userId: user._id },
-        config.get('jwtSecretKey'),
+        dotenv.parsed.SECRET_KEY,
         { expiresIn: '1h' }
       );
 
