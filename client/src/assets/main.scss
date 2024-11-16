@@ -13,6 +13,12 @@ select {
   font-size: 16px;
 }
 
+input,
+textarea {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+}
+
 .logo {
   font-family: 'Modak', cursive;
   letter-spacing: 10px;
