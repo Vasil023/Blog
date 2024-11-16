@@ -23,7 +23,7 @@ const app = express();
 // Проксі для API запитів, якщо це локальне середовище
 if (process.env.NODE_ENV === 'development') {
   app.use('/api', createProxyMiddleware({
-    target: 'http://localhost:3000', // Ваш API сервер, якщо він працює на іншому порту
+    target: 'https://nyama-b124ddd48155.herokuapp.com/', // Ваш API сервер, якщо він працює на іншому порту
     changeOrigin: true,
     pathRewrite: { '^/api': '' }, // Перезаписуємо шлях, якщо потрібно
   }));
