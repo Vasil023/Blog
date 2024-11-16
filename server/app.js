@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv').config();
 const path = require('path'); // Додано для роботи з шляхами
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const authRoutes = require('./routes/auth.routes');
 const recipeRoutes = require('./routes/recipe.routes');
 
@@ -40,3 +41,8 @@ app.get('*', (req, res) => {
 
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.use('/api', createProxyMiddleware({
+  target: 'http://localhost:3000', // Ваш локальний API сервер
+  changeOrigin: true,
+}));
