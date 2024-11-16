@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'client', 'dist')));
 app.use(cors());
 
 // Middleware для обробки JSON у вхідних запитах
-app.use(express.json({ limit: '10mb' })); // Обмеження, якщо потрібно
+app.use(express.json({ limit: '50mb' })); // Обмеження, якщо потрібно
 
 // Підключення до MongoDB
 mongoose.connect(url)
