@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000; // Використовуємо process.e
 const app = express();
 
 // Статичні файли
-app.use(express.static(path.join(__dirname, 'client', 'dist')));
+app.use(express.static(path.join('client', 'dist')));
 
 // Налаштування CORS
 app.use(cors());
@@ -32,9 +32,10 @@ mongoose.connect(url)
 app.use('/api/auth', authRoutes);
 app.use('/api/recipes', recipeRoutes);
 
+
 // Catch-all route for SPA
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  res.sendFile(path.join('client', 'dist', 'index.html'));
 });
 
 
