@@ -6,7 +6,7 @@ const authRoutes = require('./routes/auth.routes');
 const recipeRoutes = require('./routes/recipe.routes');
 
 const url = 'mongodb+srv://myblogactivation:cyKjAufKOSA9lLGW@cooking.bgsxm.mongodb.net/test?retryWrites=true&w=majority&appName=cooking';
-const port = dotenv.parsed.PORT || 3000;
+const PORT = dotenv.parsed.PORT || 3000;
 
 const app = express();
 
@@ -30,5 +30,4 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
-const PORT = port || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
