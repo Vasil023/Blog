@@ -6,37 +6,55 @@ export const useUserStore = defineStore('user', {
     token: localStorage.getItem('token') || null,
     userId: localStorage.getItem('userId') || null,
     error: null,
+    isLoading: false
   }),
 
   actions: {
     async register(email, password, role) {
-
+      this.isLoading = true
       try {
         const response = await register(email, password, role)
 
-        // Якщо реєстрація успішна, зберігаємо токен
-        this.token = response.data.token
-        this.user = { email } // Можна зберігати більше даних, якщо треба
+        // Перевірка помилок  
+        if (response.status === 400) {
+          this.error = response.response?.data;
+          this.isLoading = false;
+          return
+        }
 
-        localStorage.setItem('token', this.token) // Зберігаємо токен в localStorage
+        this.isLoading = false
+
       } catch (error) {
-        this.error = error.response?.data?.message || 'Не вдалося зареєструватися'
+        console.log('error', error);
+        this.error = error || 'Не вдалося зареєструватися'
       }
     },
 
     async login(email, password) {
+      this.isLoading = true;
+      this.error = null;
+
       try {
-        const response = await login(email, password)
+        const response = await login(email, password);
 
-        // Якщо логін успішний, зберігаємо токен
-        this.token = response.token
-        this.user = response.email
+        // Перевірка помилок  
+        if (response.status === 400) {
+          this.error = response.response?.data;
+          this.isLoading = false;
+          return
+        }
 
-        // Зберегти токен та userId у localStorage
-        localStorage.setItem('token', response.token)
-        localStorage.setItem('userId', response.userId)
+        console.log('next step');
+        localStorage.setItem('token', response?.token);
+        localStorage.setItem('userId', response?.userId);
+
+        this.token = response?.token;
+        this.user = response?.email;
+        this.isLoading = false;
       } catch (error) {
-        this.error = error.response?.data?.message || 'Не вдалося увійти'
+        console.error('Помилка:', error);
+        this.error = 'Виникла помилка з’єднання. Спробуйте ще раз.';
+        this.isLoading = false;
       }
     },
 

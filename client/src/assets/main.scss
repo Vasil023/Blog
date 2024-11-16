@@ -7,6 +7,18 @@ body {
   background: #fff;
 }
 
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+input,
+textarea {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+}
+
 .logo {
   font-family: 'Modak', cursive;
   letter-spacing: 10px;
@@ -23,6 +35,11 @@ body {
     padding: 12px 0px 12px 0px;
     display: flex;
     justify-content: center;
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 
   .file {

@@ -14,6 +14,7 @@ const app = createApp(App)
 app.use(Vue3Toastify);
 
 app.use(createPinia())
+
 app.use(router)
 
 app.mount('#app')
