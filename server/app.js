@@ -10,12 +10,12 @@ const recipeRoutes = require('./routes/recipe.routes');
 const url = process.env.MONGODB_URI || 'mongodb+srv://myblogactivation:cyKjAufKOSA9lLGW@cooking.bgsxm.mongodb.net/test?retryWrites=true&w=majority&appName=cooking';
 const PORT = process.env.PORT || 3000; // Використовуємо process.env.PORT для Heroku
 
-const corsOptions = {
-  origin: 'http://localhost:3000', // або ваш фронтенд домен
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true, // Якщо ви працюєте з cookie або автентифікацією
-};
+// const corsOptions = {
+//   origin: 'http://localhost:3000/api', // або ваш фронтенд домен
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true, // Якщо ви працюєте з cookie або автентифікацією
+// };
 
 
 const app = express();
@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static(path.join('client', 'dist')));
 
 // Налаштування CORS
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Middleware для обробки JSON у вхідних запитах
 app.use(express.json({ limit: '50mb' })); // Обмеження, якщо потрібно
