@@ -21,13 +21,13 @@ const PORT = process.env.PORT || 3000; // Використовуємо process.e
 const app = express();
 
 // Проксі для API запитів, якщо це локальне середовище
-if (process.env.NODE_ENV === 'development') {
-  app.use('/api', createProxyMiddleware({
-    target: 'https://nyama-b124ddd48155.herokuapp.com/', // Ваш API сервер, якщо він працює на іншому порту
-    changeOrigin: true,
-    pathRewrite: { '^/api': '' }, // Перезаписуємо шлях, якщо потрібно
-  }));
-}
+// if (process.env.NODE_ENV === 'development') {
+//   app.use('/api', createProxyMiddleware({
+//     target: 'https://nyama-b124ddd48155.herokuapp.com/', // Ваш API сервер, якщо він працює на іншому порту
+//     changeOrigin: true,
+//     pathRewrite: { '^/api': '' }, // Перезаписуємо шлях, якщо потрібно
+//   }));
+// }
 
 // Статичні файли
 app.use(express.static(path.join('client', 'dist')));

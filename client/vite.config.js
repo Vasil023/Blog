@@ -18,12 +18,12 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000,
 
-    proxy: {
-      '/api': {
-        target: 'https://nyama-b124ddd48155.herokuapp.com',
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, ''),
-      },
-    },
+    // proxy: {
+    //   '/api': {
+    //     target: 'https://nyama-b124ddd48155.herokuapp.com',
+    //     changeOrigin: true,
+    //     rewrite: path => path.replace(/^\/api/, ''),
+    //   },
+    // },
   },
 })
