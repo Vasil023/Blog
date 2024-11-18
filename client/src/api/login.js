@@ -9,17 +9,17 @@ export const register = async (email, password, role) => {
     return response.data;
   } catch (error) {
     console.error('Failed to fetch products', error);
-    throw error;
+    throw error.response.data;
   }
 };
 
 export const login = async (email, password) => {
   try {
     const response = await apiClient.post(LOGIN, { email, password });
-    return response.data;
+    return response?.data;
   } catch (error) {
-    console.error('Failed to fetch products', error);
-    throw error;
+    console.log('Failed to fetch products', error);
+    return error
   }
 };
 

@@ -7,7 +7,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const authRoutes = require('./routes/auth.routes');
 const recipeRoutes = require('./routes/recipe.routes');
 
-const url = process.env.MONGODB_URI || 'mongodb+srv://myblogactivation:cyKjAufKOSA9lLGW@cooking.bgsxm.mongodb.net/test?retryWrites=true&w=majority&appName=cooking';
+const url = process.env.MONGODB_URI || 'mongodb+srv://myblogactivation:cyKjAufKOSA9lLGW@cooking.bgsxm.mongodb.net/coockin?retryWrites=true&w=majority&appName=cooking';
 const PORT = process.env.PORT || 3000; // Використовуємо process.env.PORT для Heroku
 
 // const corsOptions = {

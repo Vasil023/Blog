@@ -30,6 +30,7 @@ router.post(
 
       // Перевірка, чи існує користувач
       const existingUser = await User.findOne({ email });
+
       if (existingUser) {
         return res.status(400).json({ message: 'Такой пользователь уже существует' });
       }
@@ -62,37 +63,42 @@ router.post(
   '/login',
   [
     check('email', 'Введіть правильний email').normalizeEmail().isEmail(),
-    check('password', 'Введіть пароль').exists()
+    check('password', 'Пароль повинен бути не менше 6 символів').isLength({ min: 6 }),
   ],
   async (req, res) => {
     try {
-      const errors = validationResult(req)
+      const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(401).json({
-          errors: errors.array(),
-          message: 'Некоректні дані при вході'
-        })
+        return res.json({ errors: errors.array(), status: 400 });
       }
 
-      const { email, password } = req.body
-      const user = await User.findOne({ email })
+      const { email, password } = req.body;
+
+      const user = await User.findOne({ email });
 
       if (!user) {
-        return res.status(400).json({ message: 'Користувача не знайдено' })
+        return res.json({ message: 'Користувача не знайдено', type: 'email' });
       }
 
-      const isPasswordValid = await bcrypt.compare(password, user.password)
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+
       if (!isPasswordValid) {
-        return res.status(400).json({ message: 'Невірний пароль' })
+        return res.json({ message: 'Невірний пароль', type: 'password' });
       }
 
-      const token = jwt.sign({ userId: user.id }, 'your_jwt_secret_key', { expiresIn: '1h' })
+      const token = jwt.sign(
+        { userId: user.id },
+        process.env.JWT_SECRET || 'default_secret_key',
+        { expiresIn: '1h' }
+      );
 
-      res.json({ token, email, userId: user.id })
+      res.json({ token, email: user.email, userId: user.id });
     } catch (e) {
-      res.status(500).json({ message: 'Щось пішло не так' })
+      console.error('Помилка логіну:', e.message);
+      res.status(500).json({ message: 'Внутрішня помилка сервера' });
     }
   }
-)
+);
+
 
 module.exports = router;

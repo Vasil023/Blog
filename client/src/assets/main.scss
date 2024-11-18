@@ -35,6 +35,11 @@ textarea {
     padding: 12px 0px 12px 0px;
     display: flex;
     justify-content: center;
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 
   .file {
