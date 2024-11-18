@@ -2,7 +2,7 @@
 import { onMounted } from "vue";
 import { useRecipeStore } from "@/stores/recipeStore";
 
-import recipeItem from "@/components/RecipeItem.vue";
+import recipeItem from "@/components/recipeItem.vue";
 
 const recipeStore = useRecipeStore();
 

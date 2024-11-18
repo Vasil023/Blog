@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import recipeItem from "@/components/RecipeItem.vue";
+import recipeItem from "@/components/recipeItem.vue";
 import { useRecipeStore } from "@/stores/recipeStore";
 
 const recipeStore = useRecipeStore();
