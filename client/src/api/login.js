@@ -6,10 +6,10 @@ const LOGIN = "/auth/login";
 export const register = async (email, password, role) => {
   try {
     const response = await apiClient.post(REGISTER, { email, password, role });
-    return response.data;
+    return response?.data;
   } catch (error) {
     console.error('Failed to fetch products', error);
-    throw error.response.data;
+    return error;
   }
 };
 
@@ -22,5 +22,3 @@ export const login = async (email, password) => {
     return error
   }
 };
-
-

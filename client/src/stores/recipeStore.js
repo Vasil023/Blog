@@ -4,7 +4,7 @@ import { getAllRecipe, createRecipe, checkItem } from '@/api/recipe'
 export const useRecipeStore = defineStore('recipe', {
   state: () => ({
     allRecipe: [],
-    isLoading: true,
+    isLoading: false,
   }),
 
   actions: {
@@ -17,7 +17,6 @@ export const useRecipeStore = defineStore('recipe', {
     },
 
     async checkItem(id, isChecked) {
-      console.log(id, isChecked);
       try {
         const response = await checkItem(id, isChecked)
 
@@ -37,7 +36,9 @@ export const useRecipeStore = defineStore('recipe', {
       try {
         const response = await getAllRecipe()
 
-        this.allRecipe = response.recipes
+        this.allRecipe = response.recipes || []
+
+        this.isLoading = false
 
         this.isLoading = false
 
@@ -46,8 +47,6 @@ export const useRecipeStore = defineStore('recipe', {
         this.isLoading = false
       }
     },
-
-
   },
 
   getters: {

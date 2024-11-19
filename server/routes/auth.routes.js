@@ -32,7 +32,7 @@ router.post(
       const existingUser = await User.findOne({ email });
 
       if (existingUser) {
-        return res.status(400).json({ message: 'Такой пользователь уже существует' });
+        return res.status(400).json({ message: 'Такий користувач уже існує', type: 'email' });
       }
 
       // Хешування пароля
@@ -77,18 +77,18 @@ router.post(
       const user = await User.findOne({ email });
 
       if (!user) {
-        return res.json({ message: 'Користувача не знайдено', type: 'email' });
+        return res.status(400).json({ message: 'Користувача не знайдено', type: 'email' });
       }
 
       const isPasswordValid = await bcrypt.compare(password, user.password);
 
       if (!isPasswordValid) {
-        return res.json({ message: 'Невірний пароль', type: 'password' });
+        return res.status(400).json({ message: 'Невірний пароль', type: 'password' });
       }
 
       const token = jwt.sign(
         { userId: user.id },
-        process.env.JWT_SECRET || 'default_secret_key',
+        process.env.SECRET_KEY || 'default_secret_key',
         { expiresIn: '1h' }
       );
 

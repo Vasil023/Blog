@@ -15,6 +15,14 @@ export const useUserStore = defineStore('user', {
       try {
         await register(email, password, role)
 
+        // Перевірка помилок  
+        if (response.status === 400) {
+          this.error = response.response?.data;
+          this.isLoading = false;
+          return
+        }
+
+        this.isLoading = false
 
       } catch (error) {
         console.log('error', error);
@@ -29,17 +37,11 @@ export const useUserStore = defineStore('user', {
       try {
         const response = await login(email, password);
 
-        // Перевірка помилок
-        if (response?.errors) {
-          this.error = response?.errors;
+        // Перевірка помилок  
+        if (response.status === 400) {
+          this.error = response.response?.data;
           this.isLoading = false;
-          return;
-        }
-
-        if (response?.message) {
-          this.error = response;
-          this.isLoading = false;
-          return;
+          return
         }
 
         localStorage.setItem('token', response?.token);

@@ -1,9 +1,10 @@
 <script setup>
 import { computed } from "vue";
-import recipeItem from "@/components/recipeItem.vue";
 import { useRecipeStore } from "@/stores/recipeStore";
 
 const recipeStore = useRecipeStore();
+
+import recipeItem from "@/components/recipeItem.vue";
 
 const isCheckedItem = computed(() => {
   return recipeStore.allRecipe.filter((item) => item.isChecked);
@@ -13,7 +14,10 @@ const isCheckedItem = computed(() => {
 <template>
   <div>
     <div class="container">
-      <div class="columns-2 gap-2 pt-6 pb-20" v-if="isCheckedItem.length">
+      <div
+        class="columns-2 lg:columns-4 lg:gap-3 gap-2 pt-1 pb-20"
+        v-if="isCheckedItem.length"
+      >
         <recipeItem
           v-for="item in isCheckedItem"
           :item="item"

@@ -1,32 +1,54 @@
 // routes/auth.js
 const { Router } = require('express');
+const sharp = require('sharp');
 const Recipe = require('../models/Recipe');
-const upload = require("../upload")
 const router = Router();
 
 
-// Маршрут для створення рецепту з зображенням
-router.post('/create', upload.single('image'), async (req, res) => {
+// Маршрут для створення рецепту з перевіркою формату
+router.post('/create', async (req, res) => {
   try {
-
     const { title, description, point, image, isChecked, isDone, isCooking } = req.body;
 
-    // Перевірка наявності title та description
     if (!title || !description) {
       return res.status(400).json({ message: 'Title and description are required' });
     }
 
-    // Створення нового рецепту
+    // if (!image) {
+    //   return res.status(400).json({ message: 'Image is required' });
+    // }
+
+    // let buffer;
+    // if (image.startsWith('data:image/')) {
+    //   const base64Data = image.split(';base64,').pop(); // Відокремлюємо base64
+    //   buffer = Buffer.from(base64Data, 'base64'); // Створюємо буфер
+    // } else {
+    //   return res.status(400).json({ message: 'Unsupported image format' });
+    // }
+
+    // // Конвертуємо зображення в підтримуваний формат
+    // const compressedImageBuffer = await sharp(buffer)
+    //   .toFormat('jpeg') // Конвертуємо в JPEG
+    //   .resize(400) // Зменшуємо розмір до 800px
+    //   .jpeg({ quality: 80 }) // Стискаємо з якістю 80%
+    //   .toBuffer();
+
+
+    // // Перетворюємо буфер назад у base64
+    // const compressedImageBase64 = compressedImageBuffer.toString('base64');
+    // const finalImage = `data:image/jpeg;base64,${compressedImageBase64}`;
+
     const newRecipe = new Recipe({
       title,
       description,
-      image, // Додаємо шлях до зображення
+      image, // Додаємо оброблене зображення
       point,
       isDone,
-      isCooking
+      isCooking,
+      isChecked
     });
 
-    await newRecipe.save(); // Зберігаємо рецепт в базі даних
+    await newRecipe.save();
 
     res.status(201).json({ message: 'Recipe created successfully', recipe: newRecipe });
   } catch (error) {
