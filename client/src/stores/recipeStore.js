@@ -40,6 +40,8 @@ export const useRecipeStore = defineStore('recipe', {
 
         this.isLoading = false
 
+        this.isLoading = false
+
       } catch (error) {
         this.error = error.response?.data?.message || 'Не вдалося загрузити рецепти'
         this.isLoading = false

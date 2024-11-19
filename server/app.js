@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3000; // Використовуємо process.e
 
 const app = express();
 
+
 // Статичні файли
 app.use(express.static(path.join('client', 'dist')));
 

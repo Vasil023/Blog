@@ -16,7 +16,6 @@ export const register = async (email, password, role) => {
 export const login = async (email, password) => {
   try {
     const response = await apiClient.post(LOGIN, { email, password });
-    console.log('response', response);
     return response?.data;
   } catch (error) {
     console.log('Failed to fetch products', error);

@@ -13,7 +13,7 @@ export const useUserStore = defineStore('user', {
     async register(email, password, role) {
       this.isLoading = true
       try {
-        const response = await register(email, password, role)
+        await register(email, password, role)
 
         // Перевірка помилок  
         if (response.status === 400) {
@@ -44,7 +44,6 @@ export const useUserStore = defineStore('user', {
           return
         }
 
-        console.log('next step');
         localStorage.setItem('token', response?.token);
         localStorage.setItem('userId', response?.userId);
 
